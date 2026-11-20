@@ -4,24 +4,25 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import ScrollToTop from "@/components/ScrollToTop";
+import { AuthProvider } from "@/admin/AuthContext";
+import ProtectedRoute from "@/admin/ProtectedRoute";
 import Index from "./pages/Index.tsx";
 import QuemSomos from "./pages/QuemSomos.tsx";
 import Servicos from "./pages/Servicos.tsx";
-import Convenios from "./pages/Convenios.tsx";
-import Noticias from "./pages/Noticias.tsx";
-import Contato from "./pages/Contato.tsx";
-import AlvaraBombeiros from "./pages/AlvaraBombeiros.tsx";
-import AssociarSe from "./pages/AssociarSe.tsx";
-import AssessoriaJuridica from "./pages/AssessoriaJuridica.tsx";
-import MediacaoDigital from "./pages/MediacaoDigital.tsx";
-import Repis from "./pages/Repis.tsx";
 import ConvencaoColetiva from "./pages/ConvencaoColetiva.tsx";
-import AberturaFeriados from "./pages/AberturaFeriados.tsx";
+import SolicitacaoDomingosFeriados from "./pages/SolicitacaoDomingosFeriados.tsx";
 import Feriados from "./pages/Feriados.tsx";
+import Noticias from "./pages/Noticias.tsx";
+import NoticiaDetalhe from "./pages/NoticiaDetalhe.tsx";
+import Convenios from "./pages/Convenios.tsx";
 import Diretoria from "./pages/Diretoria.tsx";
+import Contato from "./pages/Contato.tsx";
+import AdminLogin from "./pages/AdminLogin.tsx";
+import AdminDashboard from "./pages/AdminDashboard.tsx";
+import AdminNewsForm from "./pages/AdminNewsForm.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({ defaultOptions: { queries: { retry: 1, refetchOnWindowFocus: false } } });
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -29,25 +30,31 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/quem-somos" element={<QuemSomos />} />
-          <Route path="/servicos" element={<Servicos />} />
-          <Route path="/convenios" element={<Convenios />} />
-          <Route path="/noticias" element={<Noticias />} />
-          <Route path="/contato" element={<Contato />} />
-          <Route path="/alvara-bombeiros" element={<AlvaraBombeiros />} />
-          <Route path="/associar-se" element={<AssociarSe />} />
-          <Route path="/assessoria-juridica" element={<AssessoriaJuridica />} />
-          <Route path="/mediacao-digital" element={<MediacaoDigital />} />
-          <Route path="/repis" element={<Repis />} />
-          <Route path="/convencao-coletiva" element={<ConvencaoColetiva />} />
-          <Route path="/abertura-feriados" element={<AberturaFeriados />} />
-          <Route path="/feriados" element={<Feriados />} />
-          <Route path="/diretoria" element={<Diretoria />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <AuthProvider>
+          <ScrollToTop />
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/quem-somos" element={<QuemSomos />} />
+            <Route path="/servicos" element={<Servicos />} />
+            <Route path="/convencoes-coletivas" element={<ConvencaoColetiva />} />
+            <Route path="/solicitacao-domingos-feriados" element={<SolicitacaoDomingosFeriados />} />
+            <Route path="/feriados" element={<Feriados />} />
+            <Route path="/noticias" element={<Noticias />} />
+            <Route path="/noticias/:slug" element={<NoticiaDetalhe />} />
+            <Route path="/parceiros" element={<Convenios />} />
+            <Route path="/diretoria" element={<Diretoria />} />
+            <Route path="/contato" element={<Contato />} />
+
+            <Route path="/admin/login" element={<AdminLogin />} />
+            <Route element={<ProtectedRoute />}>
+              <Route path="/admin" element={<AdminDashboard />} />
+              <Route path="/admin/noticias/nova" element={<AdminNewsForm />} />
+              <Route path="/admin/noticias/:id" element={<AdminNewsForm />} />
+            </Route>
+
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </AuthProvider>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
