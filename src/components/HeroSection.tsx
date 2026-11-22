@@ -11,7 +11,7 @@ const HeroSection = () => (
       style={{ backgroundImage: "radial-gradient(circle at 1px 1px, white 1px, transparent 0)", backgroundSize: "28px 28px" }}
     />
     <div className="container relative z-10 grid min-h-[440px] items-center gap-8 py-14 md:grid-cols-[1.4fr_1fr] md:py-20">
-      <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="max-w-2xl">
+      <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="min-w-0 max-w-2xl">
         <div className="mb-4 inline-flex items-center gap-2 border border-primary-foreground/20 bg-primary-foreground/5 px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary-foreground/90">
           <Store className="h-3.5 w-3.5" />
           Sindicato patronal do comércio
@@ -23,7 +23,7 @@ const HeroSection = () => (
           Representação e defesa das empresas do comércio, com foco em segurança jurídica, apoio institucional e fortalecimento do setor.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
-          <Button size="lg" variant="secondary" asChild>
+          <Button size="lg" variant="secondary" className="h-auto min-h-11 w-full whitespace-normal sm:w-auto" asChild>
             <Link to="/solicitacao-domingos-feriados">
               Solicitar Domingos e Feriados
               <ArrowRight className="ml-2 h-4 w-4" />
@@ -32,7 +32,7 @@ const HeroSection = () => (
           <Button
             size="lg"
             variant="ghost"
-            className="border border-primary-foreground/25 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
+            className="w-full border border-primary-foreground/25 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground sm:w-auto"
             asChild
           >
             <Link to="/quem-somos">Quem Somos</Link>

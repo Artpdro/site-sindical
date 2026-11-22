@@ -42,7 +42,7 @@ const Header = () => {
 
         <button
           onClick={() => setOpen(!open)}
-          className="absolute right-4 rounded-md p-2 text-foreground sm:right-8 xl:hidden"
+          className="absolute right-4 rounded-md p-2 text-foreground sm:right-6 lg:right-8 xl:hidden"
           aria-label={open ? "Fechar menu" : "Abrir menu"}
           aria-expanded={open}
         >
@@ -51,7 +51,7 @@ const Header = () => {
       </div>
 
       {open && (
-        <div className="max-h-[calc(100vh-4rem)] overflow-y-auto border-t border-border bg-card px-4 pb-4 pt-2 xl:hidden">
+        <div className="max-h-[calc(100vh-4rem)] overflow-y-auto border-t border-border bg-card px-4 pb-4 pt-2 sm:px-6 xl:hidden">
           <nav className="flex flex-col gap-1" aria-label="Navegação móvel">
             {navLinks.map((link) => (
               <Link
