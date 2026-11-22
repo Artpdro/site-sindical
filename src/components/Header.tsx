@@ -21,17 +21,17 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/80">
-      <div className="container flex h-16 items-center justify-between md:h-20">
+      <div className="container relative flex h-16 items-center justify-center xl:h-auto xl:flex-col xl:gap-1 xl:py-3">
         <Link to="/" aria-label="Sindilojas Garanhuns – página inicial" className="flex items-center">
           <Brand />
         </Link>
 
-        <nav className="hidden items-center gap-0.5 xl:flex" aria-label="Navegação principal">
+        <nav className="hidden items-center justify-center gap-0.5 xl:flex" aria-label="Navegação principal">
           {navLinks.map((link) => (
             <Link
               key={link.path}
               to={link.path}
-              className={`rounded-md px-2.5 py-2 font-body text-[13px] font-medium transition-colors hover:bg-secondary hover:text-secondary-foreground ${
+              className={`rounded-md px-3 py-2 font-body text-sm font-medium transition-colors hover:bg-secondary hover:text-secondary-foreground ${
                 isActive(link.path) ? "bg-secondary text-secondary-foreground" : "text-muted-foreground"
               }`}
             >
@@ -42,7 +42,7 @@ const Header = () => {
 
         <button
           onClick={() => setOpen(!open)}
-          className="rounded-md p-2 text-foreground xl:hidden"
+          className="absolute right-4 rounded-md p-2 text-foreground sm:right-8 xl:hidden"
           aria-label={open ? "Fechar menu" : "Abrir menu"}
           aria-expanded={open}
         >
