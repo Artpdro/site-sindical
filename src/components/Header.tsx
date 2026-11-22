@@ -7,8 +7,6 @@ export const navLinks = [
   { label: "Início", path: "/" },
   { label: "Quem Somos", path: "/quem-somos" },
   { label: "Serviços", path: "/servicos" },
-  { label: "Convenções Coletivas", path: "/convencoes-coletivas" },
-  { label: "Domingos e Feriados", path: "/solicitacao-domingos-feriados", highlight: true },
   { label: "Feriados", path: "/feriados" },
   { label: "Notícias", path: "/noticias" },
   { label: "Parceiros / Convênios", path: "/parceiros" },
