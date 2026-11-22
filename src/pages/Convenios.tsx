@@ -1,43 +1,99 @@
-import { ExternalLink, Handshake } from "lucide-react";
-import { PageLayout, EmptyState } from "@/components/PageLayout";
-import { Button } from "@/components/ui/button";
-import { CheckCircle } from "lucide-react";
-import { parceiros } from "@/data/parceiros";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { motion } from "framer-motion";
+import { ExternalLink } from "lucide-react";
 
-const Convenios = () => (
-  <PageLayout title="Parceiros / Convênios" subtitle="Empresas parceiras, instituições e convênios do Sindilojas Garanhuns.">
-    <section className="bg-background py-12 md:py-16">
-      <div className="container max-w-5xl">
-        {parceiros.length === 0 ? (
-          <EmptyState title="Parceiros em breve" description="Os parceiros e convênios do Sindilojas Garanhuns serão divulgados aqui." />
-        ) : (
-          <div className="grid gap-4 md:grid-cols-2">
-            {parceiros.map((p) => (
-              <article key={p.id} className="flex flex-col border border-border bg-card p-5 shadow-card">
-                <div className="flex h-16 w-16 items-center justify-center bg-white p-2">
-                  {p.logo ? <img src={p.logo} alt={`Logo ${p.nome}`} className="h-full w-full object-contain" /> : <Handshake className="h-7 w-7 text-primary" />}
-                </div>
-                <h2 className="mt-3 font-display text-base font-bold text-card-foreground">{p.nome}</h2>
-                <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{p.descricao}</p>
-                {p.beneficios && p.beneficios.length > 0 && (
-                  <ul className="mt-3 space-y-1">
-                    {p.beneficios.map((b) => (
-                      <li key={b} className="flex items-center gap-2 text-sm text-card-foreground"><CheckCircle className="h-3.5 w-3.5 shrink-0 text-success" />{b}</li>
-                    ))}
-                  </ul>
-                )}
-                {p.link && (
-                  <Button variant="outline" size="sm" className="mt-4 w-fit" asChild>
-                    <a href={p.link} target="_blank" rel="noopener noreferrer">Acessar<ExternalLink className="ml-1.5 h-3.5 w-3.5" /></a>
-                  </Button>
-                )}
-              </article>
-            ))}
+import logoSenac from "@/assets/logo-senac.png";
+import logoSesc from "@/assets/logo-sesc.png";
+import logoFecomercio from "@/assets/logo-fecomercio.jpg";
+import logoCnc from "@/assets/logo-cnc.png";
+
+const partners = [
+  {
+    logo: logoSenac,
+    name: "SENAC PE",
+    description: "Cursos profissionalizantes e de qualificação para o comércio. Condições especiais para empresas do comércio.",
+    url: "http://www.pe.senac.br/",
+  },
+  {
+    logo: logoSesc,
+    name: "SESC PE",
+    description: "Saúde, cultura, lazer e assistência social para trabalhadores do comércio e seus dependentes.",
+    url: "https://www.sescpe.org.br/",
+  },
+  {
+    logo: logoFecomercio,
+    name: "Fecomércio PE",
+    description: "Federação do Comércio de Bens, Serviços e Turismo do Estado de Pernambuco. Órgão de representação superior.",
+    url: "http://fecomercio-pe.com.br/site/",
+  },
+  {
+    logo: logoCnc,
+    name: "CNC",
+    description: "Confederação Nacional do Comércio – órgão máximo do sistema confederativo da representação sindical do comércio.",
+    url: "https://www.portaldocomercio.org.br/",
+  },
+];
+
+const Convenios = () => {
+  return (
+    <div className="flex min-h-screen flex-col">
+      <Header />
+      <main className="flex-1">
+        <section className="bg-primary py-14 md:py-20">
+          <div className="container">
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="font-display text-3xl font-extrabold text-primary-foreground md:text-4xl"
+            >
+              Convênios e Parcerias
+            </motion.h1>
+            <p className="mt-3 max-w-2xl text-base text-primary-foreground/80">
+              Conheça nossos parceiros e os benefícios exclusivos para empresas associadas.
+            </p>
           </div>
-        )}
-      </div>
-    </section>
-  </PageLayout>
-);
+        </section>
+
+        <section className="bg-background py-14 md:py-20">
+          <div className="container max-w-5xl">
+            <div className="grid gap-4 md:grid-cols-2">
+              {partners.map((partner, index) => (
+                <motion.a
+                  key={partner.name}
+                  href={partner.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.08 }}
+                  className="group flex flex-col border border-border bg-card p-5 shadow-card transition-all duration-200 hover:shadow-card-hover hover:-translate-y-0.5"
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex h-14 w-14 items-center justify-center bg-white p-2">
+                      <img src={partner.logo} alt={partner.name} className="h-full w-full object-contain" />
+                    </div>
+                    <ExternalLink className="h-4 w-4 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
+                  </div>
+                  <h3 className="mt-3 font-display text-base font-bold text-card-foreground">{partner.name}</h3>
+                  <p className="mt-1.5 flex-1 text-sm leading-relaxed text-muted-foreground">{partner.description}</p>
+                </motion.a>
+              ))}
+            </div>
+
+            <div className="mt-14">
+              <h2 className="font-display text-2xl font-bold text-foreground">Convênios</h2>
+              <div className="mt-4 border border-dashed border-border bg-card px-6 py-10 text-center">
+                <p className="text-sm text-muted-foreground">Campo em breve</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </div>
+  );
+};
 
 export default Convenios;
