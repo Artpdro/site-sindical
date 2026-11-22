@@ -21,8 +21,8 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/80">
-      <div className="container relative flex h-16 items-center justify-center xl:h-auto xl:flex-col xl:gap-1 xl:py-3">
-        <Link to="/" aria-label="Sindilojas Garanhuns – página inicial" className="flex items-center">
+      <div className="container relative mx-auto flex h-16 items-center justify-center xl:h-20 xl:gap-10">
+        <Link to="/" aria-label="Sindilojas Garanhuns – página inicial" className="flex shrink-0 items-center">
           <Brand />
         </Link>
 
