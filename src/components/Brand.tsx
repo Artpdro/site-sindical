@@ -7,7 +7,7 @@ import { site } from "@/data/site";
  */
 const Brand = ({ inverted = false, className = "" }: { inverted?: boolean; className?: string }) => {
   if (site.logoSrc) {
-    const img = <img src={site.logoSrc} alt={`${site.name} – Sindicato do Comércio Varejista de Garanhuns`} className={`h-11 w-auto md:h-14 ${className}`} />;
+    const img = <img src={site.logoSrc} alt={`${site.name} – Sindicato Empresarial do Sistema Comércio`} className={`h-11 w-auto md:h-16 ${className}`} />;
     // Logo tem fundo branco: no rodapé escuro, apresentada sobre um painel branco.
     return inverted ? <span className="inline-block bg-white p-2">{img}</span> : img;
   }
