@@ -29,7 +29,7 @@ supabase secrets set RESEND_API_KEY=re_xxx NOTIFY_EMAIL=arthurplima17@gmail.com
 Execute também `supabase/migrations/002_holiday_requests_via_function.sql`. Sem domínio verificado no Resend, o remetente `onboarding@resend.dev` só entrega para o e-mail da conta Resend; para outros destinatários, verifique um domínio e defina `MAIL_FROM`.
 
 ## Notícia inicial (opcional)
-`supabase/seed/noticia-seminario-pos-nrf-2026.sql` cadastra a notícia do Seminário Pós NRF 2026 (a capa fica em `public/noticias`).
+A notícia do Seminário Pós NRF 2026 já aparece como conteúdo estático (`src/data/noticias.ts`, capa em `public/noticias`). O script `supabase/seed/noticia-seminario-pos-nrf-2026.sql` é opcional: se for executado, a versão do banco passa a valer no lugar da estática.
 
 ## Acesso administrativo
 Não há link público para o painel: acesse digitando `/admin` (ou `/admin/login`) na URL do site.

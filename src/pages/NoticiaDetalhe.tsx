@@ -7,11 +7,10 @@ import { EmptyState } from "@/components/PageLayout";
 import { Skeleton } from "@/components/ui/skeleton";
 import { fetchNewsBySlug } from "@/lib/newsApi";
 import { formatDate } from "@/lib/news";
-import { isSupabaseConfigured } from "@/lib/supabase";
 
 const NoticiaDetalhe = () => {
   const { slug = "" } = useParams();
-  const { data, isLoading, error } = useQuery({ queryKey: ["news", slug], queryFn: () => fetchNewsBySlug(slug), enabled: isSupabaseConfigured });
+  const { data, isLoading, error } = useQuery({ queryKey: ["news", slug], queryFn: () => fetchNewsBySlug(slug) });
 
   return (
     <div className="flex min-h-screen flex-col">

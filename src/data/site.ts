@@ -14,7 +14,9 @@ export const site = {
     emails: [] as string[],
     whatsapp: "",
     hours: "",
-    mapsUrl: "",
+    /** Endereço usado para localizar o pino no mapa (sem andar/sala). */
+    mapQuery: "Av. Santo Antônio, 203, Santo Antônio, Garanhuns - PE, 55293-000",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Av.+Santo+Ant%C3%B4nio,+203,+Santo+Ant%C3%B4nio,+Garanhuns+-+PE,+55293-000",
     social: [] as { label: string; url: string }[],
   },
 };

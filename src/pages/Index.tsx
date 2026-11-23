@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import QuickAccessBar from "@/components/QuickAccessBar";
-import ServicesPreview from "@/components/ServicesPreview";
+import LocationMap from "@/components/LocationMap";
 import AboutPreview from "@/components/AboutPreview";
 import NewsPreview from "@/components/NewsPreview";
 import CTASection from "@/components/CTASection";
@@ -13,7 +13,7 @@ const Index = () => (
     <main className="flex-1">
       <HeroSection />
       <QuickAccessBar />
-      <ServicesPreview />
+      <LocationMap />
       <AboutPreview />
       <NewsPreview />
       <CTASection />

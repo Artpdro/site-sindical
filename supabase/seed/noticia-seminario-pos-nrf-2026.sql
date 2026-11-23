@@ -1,3 +1,4 @@
+-- (Opcional: a notícia já aparece como conteúdo estático em src/data/noticias.ts.)
 -- Notícia: Seminário Pós NRF 2026 em Garanhuns.
 -- Execute no SQL Editor do Supabase (após 001_init.sql). A capa já está em /public/noticias.
 insert into public.news (title, slug, summary, content, cover_url, category, status, published_at)

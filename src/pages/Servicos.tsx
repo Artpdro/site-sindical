@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { PageLayout } from "@/components/PageLayout";
-import { services } from "@/components/ServicesPreview";
+import { services } from "@/data/services";
 import { Button } from "@/components/ui/button";
 
 const Servicos = () => (

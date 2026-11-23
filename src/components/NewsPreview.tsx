@@ -4,10 +4,9 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import NewsCard from "@/components/NewsCard";
 import { fetchPublishedNews } from "@/lib/newsApi";
-import { isSupabaseConfigured } from "@/lib/supabase";
 
 const NewsPreview = () => {
-  const { data } = useQuery({ queryKey: ["news", "latest"], queryFn: () => fetchPublishedNews(3), enabled: isSupabaseConfigured });
+  const { data } = useQuery({ queryKey: ["news", "latest"], queryFn: () => fetchPublishedNews(3) });
   // Sem notícias publicadas (ou sem backend), a seção não é exibida na home.
   if (!data || data.length === 0) return null;
 
