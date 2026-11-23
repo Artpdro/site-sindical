@@ -20,6 +20,20 @@ npm run dev
    ```
 6. Acesse `/admin/login`.
 
+## E-mail das solicitações de domingos/feriados
+As solicitações são enviadas pela Edge Function `supabase/functions/holiday-request` (grava no banco e envia e-mail via [Resend](https://resend.com)).
+```bash
+supabase functions deploy holiday-request --no-verify-jwt
+supabase secrets set RESEND_API_KEY=re_xxx NOTIFY_EMAIL=arthurplima17@gmail.com
+```
+Execute também `supabase/migrations/002_holiday_requests_via_function.sql`. Sem domínio verificado no Resend, o remetente `onboarding@resend.dev` só entrega para o e-mail da conta Resend; para outros destinatários, verifique um domínio e defina `MAIL_FROM`.
+
+## Notícia inicial (opcional)
+`supabase/seed/noticia-seminario-pos-nrf-2026.sql` cadastra a notícia do Seminário Pós NRF 2026 (a capa fica em `public/noticias`).
+
+## Acesso administrativo
+Não há link público para o painel: acesse digitando `/admin` (ou `/admin/login`) na URL do site.
+
 ## Segurança
 - Visitantes só leem notícias `published` (política RLS); criar/editar/excluir exige estar em `public.admins`.
 - Solicitações de domingos/feriados: visitantes só podem inserir (nunca ler); administradores acessam pelo painel do Supabase.

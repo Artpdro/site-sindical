@@ -32,7 +32,7 @@ const NoticiaDetalhe = () => {
               <div className="mt-3 flex items-center gap-1.5 text-sm text-muted-foreground">
                 <Calendar className="h-4 w-4" /> {formatDate(data.published_at)}
               </div>
-              {data.cover_url && <img src={data.cover_url} alt={data.title} className="mt-6 max-h-[28rem] w-full object-cover" />}
+              {data.cover_url && <img src={data.cover_url} alt={data.title} className="mt-6 max-h-[32rem] w-full bg-secondary object-contain" />}
               <p className="mt-6 text-base font-medium leading-relaxed text-foreground">{data.summary}</p>
               {/* Conteúdo exibido como texto puro (React escapa HTML), preservando quebras de linha. */}
               <div className="mt-6 whitespace-pre-line text-base leading-relaxed text-foreground/90">{data.content}</div>

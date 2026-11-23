@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -39,6 +39,7 @@ type Values = z.infer<typeof schema>;
 const SolicitacaoDomingosFeriados = () => {
   const [sent, setSent] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const honeypot = useRef<HTMLInputElement>(null);
 
   const form = useForm<Values>({
     resolver: zodResolver(schema),
@@ -51,18 +52,21 @@ const SolicitacaoDomingosFeriados = () => {
       setSubmitError("O envio de solicitações ainda não está disponível. Tente novamente mais tarde.");
       return;
     }
-    const { error } = await supabase.from("holiday_requests").insert({
-      company_name: v.company_name.trim(),
-      cnpj: onlyDigits(v.cnpj),
-      responsible_name: v.responsible_name.trim(),
-      phone: onlyDigits(v.phone),
-      email: v.email.trim(),
-      request_type: v.request_type,
-      desired_date: v.desired_date,
-      notes: v.notes?.trim() || null,
+    const { data, error } = await supabase.functions.invoke("holiday-request", {
+      body: {
+        company_name: v.company_name.trim(),
+        cnpj: onlyDigits(v.cnpj),
+        responsible_name: v.responsible_name.trim(),
+        phone: onlyDigits(v.phone),
+        email: v.email.trim(),
+        request_type: v.request_type,
+        desired_date: v.desired_date,
+        notes: v.notes?.trim() || null,
+        website: honeypot.current?.value ?? "",
+      },
     });
     // Só confirma sucesso se o registro foi realmente gravado.
-    if (error) {
+    if (error || !data?.ok) {
       setSubmitError("Não foi possível registrar sua solicitação. Verifique os dados e tente novamente.");
       return;
     }
@@ -79,7 +83,7 @@ const SolicitacaoDomingosFeriados = () => {
             <div>
               <h2 className="font-display text-lg font-bold text-card-foreground">Sobre a solicitação</h2>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Preencha o formulário abaixo com os dados da empresa e a data em que pretende funcionar. Sua solicitação será registrada e encaminhada ao Sindilojas Garanhuns – Sindicato do Comércio da cidade de Garanhuns para análise.
+                Preencha o formulário abaixo com os dados da empresa e a data em que pretende funcionar. Sua solicitação será registrada e enviada por e-mail ao Sindilojas Garanhuns – Sindicato do Comércio da cidade de Garanhuns para análise.
               </p>
             </div>
           </div>
@@ -146,6 +150,9 @@ const SolicitacaoDomingosFeriados = () => {
                     <FormItem><FormLabel>Observações</FormLabel><FormControl><Textarea rows={4} maxLength={1000} {...field} /></FormControl><FormMessage /></FormItem>
                   )} />
                 </fieldset>
+
+                {/* Campo oculto anti-spam: deve permanecer vazio */}
+                <input ref={honeypot} type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" className="absolute left-[-9999px] h-0 w-0 opacity-0" />
 
                 {submitError && <p role="alert" className="text-sm text-destructive">{submitError}</p>}
                 <Button type="submit" size="lg" disabled={form.formState.isSubmitting || !isSupabaseConfigured}>

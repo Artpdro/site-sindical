@@ -16,7 +16,14 @@ const AdminLogin = () => {
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
 
-  useEffect(() => { document.title = "Acesso restrito | Sindilojas Garanhuns"; }, []);
+  useEffect(() => {
+    document.title = "Acesso restrito | Sindilojas Garanhuns";
+    const meta = document.createElement("meta");
+    meta.name = "robots";
+    meta.content = "noindex, nofollow";
+    document.head.appendChild(meta);
+    return () => { meta.remove(); };
+  }, []);
 
   if (!loading && session && isAdmin) return <Navigate to="/admin" replace />;
 
