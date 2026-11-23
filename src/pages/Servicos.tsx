@@ -5,7 +5,7 @@ import { services } from "@/components/ServicesPreview";
 import { Button } from "@/components/ui/button";
 
 const Servicos = () => (
-  <PageLayout title="Serviços" subtitle="Serviços do Sindilojas Garanhuns para as empresas do comércio.">
+  <PageLayout title="Serviços" subtitle="Serviços do Sindilojas Garanhuns – Sindicato do Comércio da cidade de Garanhuns para as empresas do comércio.">
     <section className="bg-background py-10 md:py-14">
       <div className="container max-w-5xl space-y-4">
         {services.map((s) => (

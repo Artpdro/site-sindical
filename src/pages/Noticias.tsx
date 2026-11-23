@@ -9,7 +9,7 @@ const Noticias = () => {
   const { data, isLoading, error } = useQuery({ queryKey: ["news", "all"], queryFn: () => fetchPublishedNews(), enabled: isSupabaseConfigured });
 
   return (
-    <PageLayout title="Notícias" subtitle="Acompanhe as novidades do Sindilojas Garanhuns e do comércio.">
+    <PageLayout title="Notícias" subtitle="Acompanhe as novidades do Sindilojas Garanhuns – Sindicato do Comércio da cidade de Garanhuns e do comércio.">
       <section className="bg-background py-12 md:py-16">
         <div className="container">
           {!isSupabaseConfigured ? (

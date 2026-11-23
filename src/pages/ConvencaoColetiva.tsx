@@ -10,7 +10,7 @@ const secoes: { key: DocumentoCategoria; titulo: string; vazio: string }[] = [
 ];
 
 const ConvencaoColetiva = () => (
-  <PageLayout title="Convenções Coletivas" subtitle="Consulte e baixe as convenções coletivas e documentos do Sindilojas Garanhuns.">
+  <PageLayout title="Convenções Coletivas" subtitle="Consulte e baixe as convenções coletivas e documentos do Sindilojas Garanhuns – Sindicato do Comércio da cidade de Garanhuns.">
     <section className="bg-background py-12 md:py-16">
       <div className="container max-w-4xl space-y-12">
         {secoes.map((s) => (

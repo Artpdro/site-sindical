@@ -75,9 +75,10 @@ const Footer = () => {
         </div>
 
         <div className="mt-10 flex flex-col items-center justify-between gap-2 border-t border-primary-foreground/20 pt-6 text-xs opacity-60 sm:flex-row">
-          <span>© {new Date().getFullYear()} Sindilojas Garanhuns – Todos os direitos reservados.</span>
+          <span>© {new Date().getFullYear()} Sindilojas Garanhuns – Sindicato do Comércio da cidade de Garanhuns. Todos os direitos reservados.</span>
           <Link to="/admin/login" className="hover:opacity-100">Área restrita</Link>
         </div>
+        <p className="mt-3 text-center text-xs opacity-60">Feito por Arthur Pedro, CNPJ: 64.720.529/0001-62</p>
       </div>
     </footer>
   );

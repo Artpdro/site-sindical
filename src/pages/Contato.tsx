@@ -16,11 +16,11 @@ const Card = ({ icon: Icon, title, children }: { icon: typeof MapPin; title: str
 const Contato = () => {
   const c = site.contact;
   return (
-    <PageLayout title="Contato" subtitle="Fale com o Sindilojas Garanhuns.">
+    <PageLayout title="Contato" subtitle="Fale com o Sindilojas Garanhuns – Sindicato do Comércio da cidade de Garanhuns.">
       <section className="bg-background py-12 md:py-16">
         <div className="container max-w-4xl">
           {!hasContact() ? (
-            <EmptyState title="Informações de contato em breve" description="Os canais de atendimento do Sindilojas Garanhuns serão divulgados nesta página." />
+            <EmptyState title="Informações de contato em breve" description="Os canais de atendimento do Sindilojas Garanhuns – Sindicato do Comércio da cidade de Garanhuns serão divulgados nesta página." />
           ) : (
             <div className="grid gap-4 md:grid-cols-2">
               {c.address && (

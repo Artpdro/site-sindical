@@ -79,7 +79,7 @@ const SolicitacaoDomingosFeriados = () => {
             <div>
               <h2 className="font-display text-lg font-bold text-card-foreground">Sobre a solicitação</h2>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Preencha o formulário abaixo com os dados da empresa e a data em que pretende funcionar. Sua solicitação será registrada e encaminhada ao Sindilojas Garanhuns para análise.
+                Preencha o formulário abaixo com os dados da empresa e a data em que pretende funcionar. Sua solicitação será registrada e encaminhada ao Sindilojas Garanhuns – Sindicato do Comércio da cidade de Garanhuns para análise.
               </p>
             </div>
           </div>

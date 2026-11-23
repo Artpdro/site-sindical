@@ -3,7 +3,7 @@ import { PageLayout, EmptyState } from "@/components/PageLayout";
 import { diretoria } from "@/data/diretoria";
 
 const Diretoria = () => (
-  <PageLayout title="Diretoria" subtitle="Integrantes da diretoria do Sindilojas Garanhuns.">
+  <PageLayout title="Diretoria" subtitle="Integrantes da diretoria do Sindilojas Garanhuns – Sindicato do Comércio da cidade de Garanhuns.">
     <section className="bg-background py-12 md:py-16">
       <div className="container max-w-4xl">
         {diretoria.length === 0 ? (

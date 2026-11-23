@@ -105,7 +105,7 @@ const Feriados = () => {
                 </Tabs>
               </div>
               <p className="mt-4 text-xs text-muted-foreground">
-                Feriados estaduais, municipais e datas previstas em convenção coletiva serão divulgados pelo Sindilojas Garanhuns.
+                Feriados estaduais, municipais e datas previstas em convenção coletiva serão divulgados pelo Sindilojas Garanhuns – Sindicato do Comércio da cidade de Garanhuns.
               </p>
             </motion.div>
           </div>

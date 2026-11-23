@@ -8,11 +8,11 @@ const Pending = ({ children }: { children: string }) => (
 );
 
 const QuemSomos = () => (
-  <PageLayout title="Quem Somos" subtitle="Conheça o Sindilojas Garanhuns.">
+  <PageLayout title="Quem Somos" subtitle="Conheça o Sindilojas Garanhuns – Sindicato do Comércio da cidade de Garanhuns.">
     <section className="bg-background py-14 md:py-20">
       <div className="container max-w-4xl">
         <p className="text-base leading-relaxed text-foreground">
-          O <strong>Sindilojas Garanhuns</strong> é um sindicato patronal voltado exclusivamente à representação das empresas do comércio.
+          O <strong>Sindilojas Garanhuns – Sindicato do Comércio da cidade de Garanhuns</strong> é um sindicato patronal voltado exclusivamente à representação das empresas do comércio.
         </p>
 
         <div className="mt-10 grid gap-4 md:grid-cols-2">
